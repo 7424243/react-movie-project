@@ -1,4 +1,5 @@
 import React from 'react'
+import ReviewDetails from '../ReviewDetails/ReviewDetails'
 
 export default function ReviewItem() {
     return (
@@ -8,6 +9,7 @@ export default function ReviewItem() {
             <p>Date of Publications: </p>
             <p>MPAA Rating: </p>
             <p>Critics Picks: </p>
+            <ReviewDetails />
         </li>
     )
 }
