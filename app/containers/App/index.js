@@ -14,6 +14,7 @@ import HomePage from 'containers/HomePage/HomePage'
 import Header from 'components/Header/Header'
 
 import '../../styles/styles.scss'
+import CriticsList from './components/CriticsList/CriticsList'
 
 
 export default function App(props) { 
@@ -26,6 +27,7 @@ export default function App(props) {
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/home" component={HomePage} />
+          <Route path="/critics" component={CriticsList} />
         </Switch>
       </div>
     )
