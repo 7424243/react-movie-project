@@ -20,9 +20,8 @@ export function HomePage(props) {
         <meta name="description" content="Home" />
       </Helmet>
       <main>
-        <img src={hesImg} />
-        <h1>I am no Jedi.</h1>
-        <p>&mdash; Ahsoka Tano</p>
+        <h1>Movie Reviews!!</h1>
+        
       </main>
     </div>
   )
