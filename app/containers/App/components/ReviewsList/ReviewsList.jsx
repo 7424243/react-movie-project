@@ -11,7 +11,7 @@ export default function ReviewsList() {
             <div>
                 <label htmlFor="filter">Filter: </label>
                 <select name="filter">
-                    <option defaultValue="Publication Date" selected>Publication Date</option>
+                    <option defaultValue="Publication Date">Publication Date</option>
                     <option defaultValue="MPAA Rating">MPAA Rating</option>
                     <option defaultValue="Publication Date">Publication Date</option>
                     <option defaultValue="Critic's Pick">Critic's Pick</option>
