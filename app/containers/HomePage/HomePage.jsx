@@ -27,7 +27,10 @@ export function HomePage(props) {
   )
 }
 
-const mapStateToProps = (state, ownProps) => {}
+//runs when the store changes or any field of ownProps is different
+const mapStateToProps = (state, ownProps) => ({
+  reviews: state.resources.reviews
+})
 
 const mapDispatchToProps = dispatch => ({
   getMovieReviews: () => dispatch(getMovieReviews()),

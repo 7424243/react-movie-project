@@ -19,8 +19,9 @@ export default function ReviewsList() {
         setNumOfResults(e.target.value)
     }
 
-    const onSubmit = () => {
-        console.log('submitted')
+    const onSubmit = (e) => {
+        e.preventDefault()
+        console.log(this.props)
     }
 
     return (
