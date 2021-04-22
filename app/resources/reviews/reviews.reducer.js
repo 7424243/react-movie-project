@@ -1,7 +1,7 @@
 import { REVIEWS_FETCH_SUCCESS } from './reviews.actions'
 
 const initialState = {
-  data: []
+  reviews: []
 }
 
 export default (state = initialState, action) => {
@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case REVIEWS_FETCH_SUCCESS: 
       return {
         ...state,
-        data: action.payload
+        reviews: action.payload
       }
     default:
       return state
