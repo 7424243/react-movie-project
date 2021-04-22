@@ -21,8 +21,18 @@ export default function ReviewsList() {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(this.props)
     }
+
+    const reviewItems = this.props.reviews.map(review => (
+        <ReviewItem 
+            key={review.id}
+            title={review.display_title}
+            img={review.multimedia.src ? review.multimedia.src : null}
+            dateOfPub={review.publication_date}
+            mpaa={review.mpaa_rating ? review.mpaa_rating : null}
+            criticsPicks={review.critics_pick ? review.critics_pick : null}
+        />
+    ))
 
     return (
         <>
@@ -48,6 +58,7 @@ export default function ReviewsList() {
             </form>
             <hr/>
             <ol>
+                {/* {reviewItems} */}
                 <ReviewItem />
                 <ReviewItem />
                 <ReviewItem />
