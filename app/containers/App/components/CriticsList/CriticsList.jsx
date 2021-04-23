@@ -12,6 +12,7 @@ export default function CriticsList() {
         <CriticItem
             key={critic.display_name}
             name={critic.display_name}
+            img={critic.multimedia !== null ? critic.multimedia.resource.src : null}
             bio={critic.bio}
         />
     ))
