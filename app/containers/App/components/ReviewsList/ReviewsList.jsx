@@ -11,7 +11,9 @@ export default function ReviewsList() {
     const [numOfResults, setNumOfResults] = useState(20)
 
     const onTitleChange = (e) => {
-        setTitle(e.target.value)
+        let searchString = e.target.value
+        setTitle(searchString)
+
     }
 
     const onFilterChange = (e) => {
@@ -24,10 +26,23 @@ export default function ReviewsList() {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(state)
     }
 
-    const reviewItems = reviews.map(review => (
+    const allReviewItems = reviews.map(review =>  (
+        <ReviewItem 
+            key={review.id}
+            id={review.id}
+            title={review.display_title ? review.display_title : 'not available'}
+            img={review.multimedia.src ? review.multimedia.src : null}
+            dateOfPub={review.publication_date ? review.publication_date : 'not available'}
+            mpaa={review.mpaa_rating ? review.mpaa_rating : 'not available'}
+            criticsPicks={review.critics_pick ? review.critics_pick : 'not available'}
+        />
+    ))
+
+    const reviewItemsByTitle = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
+
+    const renderItemsByTitle = reviewItemsByTitle.map(review =>  (
         <ReviewItem 
             key={review.id}
             id={review.id}
@@ -63,10 +78,7 @@ export default function ReviewsList() {
             </form>
             <hr/>
             <ol>
-                {reviewItems}
-                {/* <ReviewItem />
-                <ReviewItem />
-                <ReviewItem /> */}
+                {title ? renderItemsByTitle : allReviewItems}
             </ol>
         </>
     )
