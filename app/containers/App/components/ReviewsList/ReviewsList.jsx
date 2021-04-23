@@ -30,11 +30,12 @@ export default function ReviewsList() {
     const reviewItems = reviews.map(review => (
         <ReviewItem 
             key={review.id}
-            title={review.display_title}
+            id={review.id}
+            title={review.display_title ? review.display_title : 'not available'}
             img={review.multimedia.src ? review.multimedia.src : null}
-            dateOfPub={review.publication_date}
-            mpaa={review.mpaa_rating ? review.mpaa_rating : null}
-            criticsPicks={review.critics_pick ? review.critics_pick : null}
+            dateOfPub={review.publication_date ? review.publication_date : 'not available'}
+            mpaa={review.mpaa_rating ? review.mpaa_rating : 'not available'}
+            criticsPicks={review.critics_pick ? review.critics_pick : 'not available'}
         />
     ))
 

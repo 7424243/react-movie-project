@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useSelector} from 'react-redux'
 import Modal from '@material-ui/core/Modal'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -24,8 +25,10 @@ function getModalStyle() {
     },
   }));
 
-export default function ReviewDetails() {
+export default function ReviewDetails(props) {
     const classes = useStyles()
+
+    const reviews = useSelector(state => state.resources.reviews.reviews)
 
     const [open, setOpen] = useState(false)
 
@@ -37,18 +40,22 @@ export default function ReviewDetails() {
         setOpen(false)
     }
 
+    const reviewDetails = reviews.find(review => review.id === props.movieId)
+
     return (
         <div>
             <button type="button" onClick={handleOpen}>More Details...</button>
             <Modal open={open} onClose={handleClose}>
                 <div style={getModalStyle()} className={classes.paper}>
-                    <h2>Title</h2>
-                    <p>MPAA Rating: </p>
-                    <p>Critics Pick?: </p>
-                    <p>Critic's Name: </p>
-                    <p>Headline: </p>
-                    <p>Summary of Review: </p>
-                    <a>Link to Article</a>
+                    
+                    <h2>{reviewDetails.display_title}</h2>
+                    {reviewDetails.multimedia.src ? <img src={reviewDetails.multimedia.src} alt="movie review visual"/> : null}
+                    <p>Headline: {reviewDetails.headline ? reviewDetails.headline : 'not available'}</p>
+                    <p>MPAA Rating: {reviewDetails.mpaa_rating ? reviewDetails.mpaa_rating : 'not available'}</p>
+                    <p>Critics Picks: {reviewDetails.critics_pick ? reviewDetails.critics_pick : 0}</p>
+                    <p>Critic: {reviewDetails.byline ? reviewDetails.byline : 'not available'}</p>
+                    <p>Summary: {reviewDetails.summary_short ? reviewDetails.summary_short : 'not available'}</p>
+                    {reviewDetails.link.url ? <a href={reviewDetails.link.url} alt='additional information' target="_blank">{reviewDetails.link.suggested_link_text}</a> : null}
                 </div>
             </Modal>
         </div>
