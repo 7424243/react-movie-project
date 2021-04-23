@@ -8,6 +8,7 @@ import { getMovieReviews } from 'resources/reviews/reviews.actions'
 import ReviewsList from '../App/components/ReviewsList/ReviewsList'
 import { getCriticsData } from '../../resources/critics/critics.actions'
 
+
 export function HomePage(props) {
   const history = useHistory()
 
@@ -37,7 +38,6 @@ const mapStateToProps = (state, ownProps) => {
     reviews: state.resources.reviews.reviews,
     critics: state.resources.critics.critics
   }
-
 }
 
 const mapDispatchToProps = dispatch => ({

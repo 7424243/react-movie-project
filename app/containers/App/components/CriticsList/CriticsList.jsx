@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import CriticItem from '../CriticItem/CriticItem'
+
 
 export default function CriticsList() {
     return (
@@ -13,3 +14,4 @@ export default function CriticsList() {
         </div>
     )
 }
+

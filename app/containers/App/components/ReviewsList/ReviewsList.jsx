@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import {useSelector} from 'react-redux'
 import ReviewItem from '../ReviewItem/ReviewItem'
 
 export default function ReviewsList() {
+
+    const reviews = useSelector(state => state.resources.reviews.reviews)
 
     const [title, setTitle] = useState('')
     const [filter, setFilter] = useState('Publication Date')
@@ -21,9 +24,10 @@ export default function ReviewsList() {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log(state)
     }
 
-    const reviewItems = this.props.reviews.map(review => (
+    const reviewItems = reviews.map(review => (
         <ReviewItem 
             key={review.id}
             title={review.display_title}
@@ -58,11 +62,17 @@ export default function ReviewsList() {
             </form>
             <hr/>
             <ol>
-                {/* {reviewItems} */}
+                {reviewItems}
+                {/* <ReviewItem />
                 <ReviewItem />
-                <ReviewItem />
-                <ReviewItem />
+                <ReviewItem /> */}
             </ol>
         </>
     )
 }
+
+// const mapStateToProps = (state) => ({
+//     reviews: state.resources.reviews.reviews
+// })
+
+// export default compose(connect(mapStateToProps))(ReviewsList)
