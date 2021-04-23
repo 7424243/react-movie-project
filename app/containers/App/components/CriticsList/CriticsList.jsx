@@ -1,15 +1,26 @@
-import React, {useEffect} from 'react'
+import React from 'react'
+import {useSelector} from 'react-redux'
 import CriticItem from '../CriticItem/CriticItem'
 
 
 export default function CriticsList() {
+
+    const critics = useSelector(state => state.resources.critics.critics)
+    const reviews = useSelector(state => state.resources.reviews.reviews)
+
+    const criticItems = critics.map(critic => (
+        <CriticItem
+            key={critic.display_name}
+            name={critic.display_name}
+            bio={critic.bio}
+        />
+    ))
+
     return (
         <div>
             <h1>Critics</h1>
             <ul>
-                <CriticItem />
-                <CriticItem />
-                <CriticItem />
+                {criticItems}
             </ul>
         </div>
     )
