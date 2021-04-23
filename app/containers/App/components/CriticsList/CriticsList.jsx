@@ -6,9 +6,18 @@ import CriticItem from '../CriticItem/CriticItem'
 export default function CriticsList() {
 
     const critics = useSelector(state => state.resources.critics.critics)
-    const reviews = useSelector(state => state.resources.reviews.reviews)
 
-    const criticItems = critics.map(critic => (
+    const sortFunction = (a, b) => {
+        if(a.display_name.toLowerCase() < b.display_name.toLowerCase()) 
+            {return -1}
+        if(a.display_name.toLowerCase() > b.display_name.toLowerCase())
+            {return 1}
+        return 0
+    }
+
+    const sortedCritics = critics.sort(sortFunction)
+
+    const criticItems = sortedCritics.map(critic => (
         <CriticItem
             key={critic.display_name}
             name={critic.display_name}
