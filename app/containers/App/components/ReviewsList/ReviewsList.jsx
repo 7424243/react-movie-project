@@ -28,7 +28,15 @@ export default function ReviewsList() {
         e.preventDefault()
     }
 
-    const allReviewItems = reviews.map(review =>  (
+    const sortFunction = (a, b) => {
+        if(a.publication_date < b.publication_date) 
+            {return 1}
+        if(a.publication_date > b.publication_date)
+            {return -1}
+        return 0
+    }
+
+    const allReviewItems = reviews.sort(sortFunction).map(review =>  (
         <ReviewItem 
             key={review.id}
             id={review.id}
@@ -42,7 +50,7 @@ export default function ReviewsList() {
 
     const reviewItemsByTitle = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
 
-    const renderItemsByTitle = reviewItemsByTitle.map(review =>  (
+    const renderItemsByTitle = reviewItemsByTitle.sort(sortFunction).map(review =>  (
         <ReviewItem 
             key={review.id}
             id={review.id}
