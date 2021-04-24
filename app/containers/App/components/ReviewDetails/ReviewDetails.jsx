@@ -48,7 +48,7 @@ export default function ReviewDetails(props) {
 
   return (
     <div>
-        <button type="button" onClick={handleOpen}>More Details...</button>
+        <button type="button" onClick={handleOpen} className="button">More Details...</button>
         <Modal open={open} onClose={handleClose}>
             <div style={getModalStyle()} className={classes.paper}>
                 <h2>{reviewDetails.display_title}</h2>

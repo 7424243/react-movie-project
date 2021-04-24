@@ -6,8 +6,10 @@ import NavBar from '../NavBar/NavBar'
 export default function Header() {
     return (
         <header>
-            <img src={movieImg} alt="old movie camera"/>
-            <NavBar />
+            <div className="header-container">
+                <img src={movieImg} alt="old movie camera" className="logo"/>
+                <NavBar />
+            </div>
         </header>
     )
 }
