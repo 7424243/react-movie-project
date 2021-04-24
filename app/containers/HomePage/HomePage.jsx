@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet' // Header Generator
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Switch, Route, useHistory } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { getMovieReviews } from 'resources/reviews/reviews.actions'
 import ReviewsList from '../App/components/ReviewsList/ReviewsList'
@@ -48,3 +49,8 @@ export default compose(
     mapDispatchToProps
   )
 )(HomePage)
+
+HomePage.propTypes = {
+  getCriticsData: PropTypes.func.isRequired,
+  getMovieReviews: PropTypes.func.isRequired
+}

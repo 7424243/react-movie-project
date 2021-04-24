@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
 import { makeStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
 function getModalStyle() {
 
@@ -63,4 +64,8 @@ export default function ReviewDetails(props) {
     </div>
   )
   
+}
+
+ReviewDetails.propTypes = {
+  movieId: PropTypes.number
 }

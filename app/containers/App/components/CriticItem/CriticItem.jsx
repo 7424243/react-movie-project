@@ -1,6 +1,6 @@
-import { get } from 'lodash'
 import React from 'react'
 import {useSelector} from 'react-redux'
+import PropTypes from 'prop-types'
 
 export default function CriticItem(props) {
 
@@ -23,5 +23,11 @@ export default function CriticItem(props) {
             {props.bio ? <p>Bio: {props.bio}</p> : null}
         </li>
     )
-    
+
+}
+
+CriticItem.propTypes = {
+    name: PropTypes.string,
+    img: PropTypes.string,
+    bio: PropTypes.string
 }

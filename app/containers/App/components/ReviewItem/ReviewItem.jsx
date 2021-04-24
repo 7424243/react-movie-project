@@ -1,5 +1,6 @@
 import React from 'react'
 import ReviewDetails from '../ReviewDetails/ReviewDetails'
+import PropTypes from 'prop-types'
 
 export default function ReviewItem(props) {
 
@@ -14,4 +15,16 @@ export default function ReviewItem(props) {
         </li>
     )
     
+}
+
+ReviewItem.propTypes = {
+    title: PropTypes.string,
+    img: PropTypes.string,
+    dateOfPub: PropTypes.string,
+    mpaa: PropTypes.string,
+    criticsPicks: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
+    id: PropTypes.number
 }

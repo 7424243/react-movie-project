@@ -17,7 +17,7 @@ import '../../styles/styles.scss'
 import CriticsList from './components/CriticsList/CriticsList'
 
 
-export default function App(props) { 
+export default function App() { 
     return (
       <div className="app-wrapper">
         <Helmet defaultTitle="Everyone's a critic">

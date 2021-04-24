@@ -14,27 +14,6 @@ export default function ReviewsList() {
     const [numOfResults, setNumOfResults] = useState(20)
     const [currentPage, setCurrentPage] = useState(1)
 
-    //logic for displaying reviews
-    const indexOfPrevReview = currentPage * numOfResults
-    const indexOfFirstReview = indexOfPrevReview - numOfResults
-    const currentReviews = reviews.slice(indexOfFirstReview, indexOfPrevReview)
-
-    //logic for display page numbers
-    const pageNumbers = []
-    for(let i = 1; i <= Math.ceil(reviews.length / numOfResults); i++) {
-        pageNumbers.push(i)
-    }
-
-    const renderPageNumbers = pageNumbers.map(number => (
-        <li
-            key={number}
-            id={number}
-            onClick={handlePageChange}
-        >
-            {number}
-        </li>
-    ))
-
     const handlePageChange = (e) => {
         setCurrentPage(Number(e.target.id))
     }
@@ -50,6 +29,11 @@ export default function ReviewsList() {
     const onNumOfResultsChange = (e) => {
         setNumOfResults(e.target.value)
     }
+
+    //logic for displaying reviews
+    const indexOfPrevReview = currentPage * numOfResults
+    const indexOfFirstReview = indexOfPrevReview - numOfResults
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfPrevReview)
 
     const sortFunction = (a, b) => {
         if(filter === 'publication_date') {
@@ -85,7 +69,7 @@ export default function ReviewsList() {
         />
     ))
 
-    const reviewItemsByTitle = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
+    const reviewItemsByTitle = currentReviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
 
     const renderItemsByTitle = reviewItemsByTitle.sort(sortFunction).map(review =>  (
         <ReviewItem 
@@ -97,6 +81,22 @@ export default function ReviewsList() {
             mpaa={review.mpaa_rating ? review.mpaa_rating : 'not available'}
             criticsPicks={review.critics_pick ? review.critics_pick : 'not available'}
         />
+    ))
+
+    //logic for display page numbers
+    const pageNumbers = []
+    for(let i = 1; i <= Math.ceil((reviews.length) / numOfResults); i++) {
+        pageNumbers.push(i)
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => (
+        <li
+            key={number}
+            id={number}
+            onClick={handlePageChange}
+        >
+            {number}
+        </li>
     ))
 
     return (
