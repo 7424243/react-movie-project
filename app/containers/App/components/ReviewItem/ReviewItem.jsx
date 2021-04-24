@@ -10,9 +10,8 @@ export default function ReviewItem(props) {
             <p>Date of Publications: {props.dateOfPub}</p>
             <p>MPAA Rating: {props.mpaa}</p>
             <p>Critics Picks: {props.criticsPicks}</p>
-            <ReviewDetails 
-                movieId={props.id}
-            />
+            <ReviewDetails movieId={props.id}/>
         </li>
     )
+    
 }

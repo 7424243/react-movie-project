@@ -23,4 +23,5 @@ export default function CriticItem(props) {
             {props.bio ? <p>Bio: {props.bio}</p> : null}
         </li>
     )
+    
 }

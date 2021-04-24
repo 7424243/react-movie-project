@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import ReviewItem from '../ReviewItem/ReviewItem'
 
 export default function ReviewsList() {
+
+    //useSelector() hook to access global-like state
+    //https://react-redux.js.org/api/hooks
     const reviews = useSelector(state => state.resources.reviews.reviews)
 
     const [title, setTitle] = useState('')
@@ -11,7 +14,6 @@ export default function ReviewsList() {
 
     const onTitleChange = (e) => {
         setTitle(e.target.value)
-
     }
 
     const onFilterChange = (e) => {
@@ -75,19 +77,37 @@ export default function ReviewsList() {
             <form>
                 <div>
                     <label htmlFor="title">Search by Title: </label>
-                    <input type="text" name="title" onChange={onTitleChange} value={title}/>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        onChange={onTitleChange} 
+                        value={title}
+                        aria-label="movie title"
+                    />
                 </div>
                 <div>
                     <label htmlFor="filter">Filter: </label>
-                    <select name="filter" onChange={onFilterChange} defaultValue={filter}>
-                        <option value="publication_date">Publication Date</option>
-                        <option value="mpaa_rating">MPAA Rating</option>
-                        <option value="critics_pick">Critic's Pick</option>
+                    <select 
+                        name="filter" 
+                        onChange={onFilterChange} 
+                        defaultValue={filter}
+                        aria-label="filter by"
+                    >
+                        <option value="publication_date" aria-label="publication date">Publication Date</option>
+                        <option value="mpaa_rating" aria-label="mpaa rating">MPAA Rating</option>
+                        <option value="critics_pick" aria-label="number of critic's pick">Critic's Pick</option>
                     </select>
                 </div>
                 <div>
                     <label htmlFor="results">Number of Results: </label>
-                    <input type="number" min="0" max="50" onChange={onNumOfResultsChange} value={numOfResults}/>
+                    <input 
+                        type="number" 
+                        min="0" 
+                        max="50" 
+                        onChange={onNumOfResultsChange} 
+                        value={numOfResults}
+                        aria-label="number of results per page"
+                    />
                 </div>
             </form>
             <hr/>
@@ -96,4 +116,5 @@ export default function ReviewsList() {
             </ol>
         </>
     )
+    
 }

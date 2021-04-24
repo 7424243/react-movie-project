@@ -1,5 +1,5 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import CriticItem from '../CriticItem/CriticItem'
 
 
@@ -34,5 +34,6 @@ export default function CriticsList() {
             </ul>
         </div>
     )
+    
 }
 
