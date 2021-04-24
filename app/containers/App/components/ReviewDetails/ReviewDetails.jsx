@@ -55,7 +55,7 @@ export default function ReviewDetails(props) {
                     <p>Critics Picks: {reviewDetails.critics_pick ? reviewDetails.critics_pick : 0}</p>
                     <p>Critic: {reviewDetails.byline ? reviewDetails.byline : 'not available'}</p>
                     <p>Summary: {reviewDetails.summary_short ? reviewDetails.summary_short : 'not available'}</p>
-                    {reviewDetails.link.url ? <a href={reviewDetails.link.url} alt='additional information' target="_blank">{reviewDetails.link.suggested_link_text}</a> : null}
+                    {reviewDetails.link.url ? <a href={reviewDetails.link.url} alt='additional information' target="">{reviewDetails.link.suggested_link_text}</a> : null}
                 </div>
             </Modal>
         </div>

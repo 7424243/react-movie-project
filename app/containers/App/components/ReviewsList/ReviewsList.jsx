@@ -3,11 +3,10 @@ import {useSelector} from 'react-redux'
 import ReviewItem from '../ReviewItem/ReviewItem'
 
 export default function ReviewsList() {
-
     const reviews = useSelector(state => state.resources.reviews.reviews)
 
     const [title, setTitle] = useState('')
-    const [filter, setFilter] = useState('Publication Date')
+    const [filter, setFilter] = useState('publication_date')
     const [numOfResults, setNumOfResults] = useState(20)
 
     const onTitleChange = (e) => {
@@ -29,9 +28,9 @@ export default function ReviewsList() {
     }
 
     const sortFunction = (a, b) => {
-        if(a.publication_date < b.publication_date) 
+        if(a.filter < b.filter) 
             {return 1}
-        if(a.publication_date > b.publication_date)
+        if(a.filter > b.filter)
             {return -1}
         return 0
     }
@@ -72,10 +71,9 @@ export default function ReviewsList() {
                 <div>
                     <label htmlFor="filter">Filter: </label>
                     <select name="filter" onChange={onFilterChange} defaultValue={filter}>
-                        <option value="Publication Date">Publication Date</option>
-                        <option value="MPAA Rating">MPAA Rating</option>
-                        <option value="Publication Date">Publication Date</option>
-                        <option value="Critic's Pick">Critic's Pick</option>
+                        <option value="publication_date">Publication Date</option>
+                        <option value="mpaa_rating">MPAA Rating</option>
+                        <option value="critics_pick">Critic's Pick</option>
                     </select>
                 </div>
                 <div>
@@ -91,9 +89,3 @@ export default function ReviewsList() {
         </>
     )
 }
-
-// const mapStateToProps = (state) => ({
-//     reviews: state.resources.reviews.reviews
-// })
-
-// export default compose(connect(mapStateToProps))(ReviewsList)
