@@ -10,8 +10,7 @@ export default function ReviewsList() {
     const [numOfResults, setNumOfResults] = useState(20)
 
     const onTitleChange = (e) => {
-        let searchString = e.target.value
-        setTitle(searchString)
+        setTitle(e.target.value)
 
     }
 
@@ -23,19 +22,29 @@ export default function ReviewsList() {
         setNumOfResults(e.target.value)
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-    }
-
     const sortFunction = (a, b) => {
-        if(a.filter < b.filter) 
-            {return 1}
-        if(a.filter > b.filter)
-            {return -1}
-        return 0
+        if(filter === 'publication_date') {
+            if(a.publication_date < b.publication_date) 
+                {return 1}
+             if(a.publication_date > b.publication_date)
+                {return -1}
+            return 0
+        } else if(filter === 'mpaa_rating') {
+            if(a.mpaa_rating < b.mpaa_rating) 
+                {return 1}
+            if(a.mpaa_rating > b.mpaa_rating)
+                {return -1}
+            return 0
+        } else if(filter === 'critics_pick') {
+            if(a.critics_pick < b.critics_pick) 
+                {return 1}
+            if(a.critics_pick > b.critics_pick)
+                {return -1}
+            return 0
+        }
     }
 
-    const allReviewItems = reviews.sort(sortFunction).map(review =>  (
+    const allReviewItems = reviews.sort(sortFunction).map(review => (
         <ReviewItem 
             key={review.id}
             id={review.id}
@@ -63,7 +72,7 @@ export default function ReviewsList() {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form>
                 <div>
                     <label htmlFor="title">Search by Title: </label>
                     <input type="text" name="title" onChange={onTitleChange} value={title}/>
@@ -80,7 +89,6 @@ export default function ReviewsList() {
                     <label htmlFor="results">Number of Results: </label>
                     <input type="number" min="0" max="50" onChange={onNumOfResultsChange} value={numOfResults}/>
                 </div>
-                <button type="submit">Submit</button>
             </form>
             <hr/>
             <ol>
