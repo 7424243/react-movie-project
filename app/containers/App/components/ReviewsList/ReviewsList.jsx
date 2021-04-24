@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ReviewItem from '../ReviewItem/ReviewItem'
+import Pagination from "react-js-pagination"
 
 export default function ReviewsList() {
 
@@ -11,6 +12,32 @@ export default function ReviewsList() {
     const [title, setTitle] = useState('')
     const [filter, setFilter] = useState('publication_date')
     const [numOfResults, setNumOfResults] = useState(20)
+    const [currentPage, setCurrentPage] = useState(1)
+
+    //logic for displaying reviews
+    const indexOfPrevReview = currentPage * numOfResults
+    const indexOfFirstReview = indexOfPrevReview - numOfResults
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfPrevReview)
+
+    //logic for display page numbers
+    const pageNumbers = []
+    for(let i = 1; i <= Math.ceil(reviews.length / numOfResults); i++) {
+        pageNumbers.push(i)
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => (
+        <li
+            key={number}
+            id={number}
+            onClick={handlePageChange}
+        >
+            {number}
+        </li>
+    ))
+
+    const handlePageChange = (e) => {
+        setCurrentPage(Number(e.target.id))
+    }
 
     const onTitleChange = (e) => {
         setTitle(e.target.value)
@@ -46,7 +73,7 @@ export default function ReviewsList() {
         }
     }
 
-    const allReviewItems = reviews.sort(sortFunction).map(review => (
+    const allReviewItems = currentReviews.sort(sortFunction).map(review => (
         <ReviewItem 
             key={review.id}
             id={review.id}
@@ -114,6 +141,9 @@ export default function ReviewsList() {
             <ol>
                 {title ? renderItemsByTitle : allReviewItems}
             </ol>
+            <ul id="page-numbers">
+                {renderPageNumbers}
+            </ul>
         </>
     )
     
