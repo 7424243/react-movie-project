@@ -37,10 +37,36 @@ ol {
   display: flex;
 }
 
-#page-numbers > li {
-  margin-right: 0.3em;
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
 }
 
-#page-numbers > li:active {
-  font-weight: bolder;
+.page-number {
+  margin: 2px;
+  border: 2px solid transparent;
+  padding: 0.5em;
+  margin: 0.25em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+
+  color: var(--white);
+  background-color: var(--grey-800);
+  border-radius: 30px;
+
+  &:hover {
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  &:disabled {
+    background-color: var(--grey-200);
+  }
+
+  &.narrow {
+    width: 115px;
+  }
+
 }

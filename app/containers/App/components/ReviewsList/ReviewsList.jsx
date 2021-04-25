@@ -89,14 +89,14 @@ export default function ReviewsList() {
     }
 
     const renderPageNumbers = pageNumbers.map(number => (
-        <li
-            className="current"
+        <button
             key={number}
             id={number}
+            className="page-number"
             onClick={handlePageChange}
         >
             {number}
-        </li>
+        </button>
     ))
 
     return (
@@ -143,7 +143,7 @@ export default function ReviewsList() {
             <ol>
                 {title ? renderItemsByTitle : allReviewItems}
             </ol>
-            <ul id="page-numbers">
+            <ul id="page-numbers" className="pagination">
                 {renderPageNumbers}
             </ul>
         </>
