@@ -143,9 +143,9 @@ export default function ReviewsList() {
             <ol>
                 {title ? renderItemsByTitle : allReviewItems}
             </ol>
-            <ul id="page-numbers" className="pagination">
+            <div id="page-numbers" className="pagination">
                 {renderPageNumbers}
-            </ul>
+            </div>
         </>
     )
     
