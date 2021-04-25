@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ReviewItem from '../ReviewItem/ReviewItem'
-import Pagination from "react-js-pagination"
 
 export default function ReviewsList() {
 
@@ -91,6 +90,7 @@ export default function ReviewsList() {
 
     const renderPageNumbers = pageNumbers.map(number => (
         <li
+            className="current"
             key={number}
             id={number}
             onClick={handlePageChange}

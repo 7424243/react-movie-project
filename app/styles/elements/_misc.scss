@@ -35,3 +35,16 @@ ol {
 .header {
   margin: 10%
 }
+
+#page-numbers {
+  list-style: none;
+  display: flex;
+}
+
+#page-numbers > li {
+  margin-right: 0.3em;
+}
+
+#page-numbers > li:active {
+  font-weight: bolder;
+}
