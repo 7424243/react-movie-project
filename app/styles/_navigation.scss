@@ -1,4 +1,8 @@
 nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+}
+
+.navlink {
+  margin-left: 20px;
 }

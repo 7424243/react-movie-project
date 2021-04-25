@@ -6,7 +6,7 @@ import NavBar from '../NavBar/NavBar'
 export default function Header() {
     return (
         <header>
-            <div className="header-container">
+            <div className="flex header">
                 <img src={movieImg} alt="old movie camera" className="logo"/>
                 <NavBar />
             </div>

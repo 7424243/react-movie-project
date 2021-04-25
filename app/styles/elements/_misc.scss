@@ -4,8 +4,8 @@ h1 {
 
 .logo {
   display: inline-block;
-  height: 70px;
-  max-width: 250px;
+  height: 100px;
+  width: 100px;
 }
 
 .avatar {
@@ -22,4 +22,8 @@ h1 {
   &.compact {
     margin-left: -10px;
   }
+}
+
+.header {
+  margin: 10%
 }
