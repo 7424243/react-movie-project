@@ -1,10 +1,12 @@
-input {
+input, select {
   font-size: var(--font-size-small);
   height: 40px;
   background: rgba(53, 2, 6, 0.05);
-  border: 2px solid transparent;
+  border: 1px solid grey;
+  margin-bottom: 5px;
 
   &:focus {
     border: 2px solid var(--grey-800);
   }
 }
+

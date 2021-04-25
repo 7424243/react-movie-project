@@ -101,42 +101,44 @@ export default function ReviewsList() {
 
     return (
         <>
-            <form>
-                <div>
-                    <label htmlFor="title">Search by Title: </label>
-                    <input 
-                        type="text" 
-                        name="title" 
-                        onChange={onTitleChange} 
-                        value={title}
-                        aria-label="movie title"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="filter">Filter: </label>
-                    <select 
-                        name="filter" 
-                        onChange={onFilterChange} 
-                        defaultValue={filter}
-                        aria-label="filter by"
-                    >
-                        <option value="publication_date" aria-label="publication date">Publication Date</option>
-                        <option value="mpaa_rating" aria-label="mpaa rating">MPAA Rating</option>
-                        <option value="critics_pick" aria-label="number of critic's pick">Critic's Pick</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="results">Number of Results: </label>
-                    <input 
-                        type="number" 
-                        min="0" 
-                        max="50" 
-                        onChange={onNumOfResultsChange} 
-                        value={numOfResults}
-                        aria-label="number of results per page"
-                    />
-                </div>
-            </form>
+            <div className="form-container">
+                <form>
+                    <div>
+                        <label htmlFor="title">Search by Title: </label>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            onChange={onTitleChange} 
+                            value={title}
+                            aria-label="movie title"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="filter">Filter: </label>
+                        <select 
+                            name="filter" 
+                            onChange={onFilterChange} 
+                            defaultValue={filter}
+                            aria-label="filter by"
+                        >
+                            <option value="publication_date" aria-label="publication date">Publication Date</option>
+                            <option value="mpaa_rating" aria-label="mpaa rating">MPAA Rating</option>
+                            <option value="critics_pick" aria-label="number of critic's pick">Critic's Pick</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="results">Number of Results: </label>
+                        <input 
+                            type="number" 
+                            min="0" 
+                            max="50" 
+                            onChange={onNumOfResultsChange} 
+                            value={numOfResults}
+                            aria-label="number of results per page"
+                        />
+                    </div>
+                </form>
+            </div>
             <hr/>
             <ol>
                 {title ? renderItemsByTitle : allReviewItems}
