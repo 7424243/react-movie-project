@@ -20,7 +20,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 400,
+    width: 300,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -48,17 +48,17 @@ export default function ReviewDetails(props) {
 
   return (
     <div>
-        <button type="button" onClick={handleOpen} className="button">More Details...</button>
-        <Modal open={open} onClose={handleClose}>
+        <button type='button' onClick={handleOpen} className='button'>More Details...</button>
+        <Modal open={open} onClose={handleClose} className='flex'>
             <div style={getModalStyle()} className={classes.paper}>
                 <h2>{reviewDetails.display_title}</h2>
-                {reviewDetails.multimedia.src ? <img src={reviewDetails.multimedia.src} alt="movie review visual"/> : null}
+                {reviewDetails.multimedia.src ? <img src={reviewDetails.multimedia.src} alt='movie review visual'/> : null}
                 <p>Headline: {reviewDetails.headline ? reviewDetails.headline : 'not available'}</p>
                 <p>MPAA Rating: {reviewDetails.mpaa_rating ? reviewDetails.mpaa_rating : 'not available'}</p>
                 <p>Critics Picks: {reviewDetails.critics_pick ? reviewDetails.critics_pick : 0}</p>
                 <p>Critic: {reviewDetails.byline ? reviewDetails.byline : 'not available'}</p>
                 <p>Summary: {reviewDetails.summary_short ? reviewDetails.summary_short : 'not available'}</p>
-                {reviewDetails.link.url ? <a href={reviewDetails.link.url} alt='additional information' target="">{reviewDetails.link.suggested_link_text}</a> : null}
+                {reviewDetails.link.url ? <a href={reviewDetails.link.url} alt='additional information' target='_blank'>{reviewDetails.link.suggested_link_text}</a> : null}
             </div>
         </Modal>
     </div>
