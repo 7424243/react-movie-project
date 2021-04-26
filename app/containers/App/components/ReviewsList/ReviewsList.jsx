@@ -33,7 +33,6 @@ export default function ReviewsList() {
     const indexOfPrevReview = currentPage * numOfResults
     const indexOfFirstReview = indexOfPrevReview - numOfResults
     
-
     const sortFunction = (a, b) => {
         if(filter === 'publication_date') {
             if(a.publication_date < b.publication_date) 
@@ -70,16 +69,10 @@ export default function ReviewsList() {
         />
     ))
 
-    // const searchedCurrentReviews = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
-
-    // const reviewItemsByTitle = searchedCurrentReviews.slice(indexOfFirstReview, indexOfPrevReview)
-
     //filter review items as user types
     const searchedReviews = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
 
     const reviewItemsByTitle = searchedReviews.slice(indexOfFirstReview, indexOfPrevReview)
-
-    
 
     const renderItemsByTitle = reviewItemsByTitle.sort(sortFunction).map(review => (
         <ReviewItem 

@@ -17,10 +17,18 @@ export default function CriticItem(props) {
     return (
         <li>
             <h2>{props.name}</h2>
-            {props.img ? <img src={props.img} alt="critic"/> : null}
+            {props.img ? <img src={props.img} alt='critic'/> : null}
             <p>Number of Reviews Written: {numOfReviews}</p>
             <p>Number of Critics Picks: {numOfPicks}</p>
-            {props.bio ? <p>Bio: {props.bio}</p> : null}
+            {props.bio 
+                ? <p>Bio: {props.bio.split('\n<br/><br/>\n').map((item, key) => (
+                    <span key={key}>
+                        {item}
+                        <br/>
+                    </span>
+                    ))}
+                </p> 
+                : null}
         </li>
     )
 
