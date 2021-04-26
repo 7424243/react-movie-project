@@ -32,7 +32,7 @@ export default function ReviewsList() {
     //logic for displaying reviews
     const indexOfPrevReview = currentPage * numOfResults
     const indexOfFirstReview = indexOfPrevReview - numOfResults
-    const currentReviews = reviews.slice(indexOfFirstReview, indexOfPrevReview)
+    
 
     const sortFunction = (a, b) => {
         if(filter === 'publication_date') {
@@ -56,6 +56,8 @@ export default function ReviewsList() {
         }
     }
 
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfPrevReview)
+
     const allReviewItems = currentReviews.sort(sortFunction).map(review => (
         <ReviewItem 
             key={review.id}
@@ -68,10 +70,18 @@ export default function ReviewsList() {
         />
     ))
 
-    //filter review items as user types
-    const reviewItemsByTitle = currentReviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
+    // const searchedCurrentReviews = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
 
-    const renderItemsByTitle = reviewItemsByTitle.sort(sortFunction).map(review =>  (
+    // const reviewItemsByTitle = searchedCurrentReviews.slice(indexOfFirstReview, indexOfPrevReview)
+
+    //filter review items as user types
+    const searchedReviews = reviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
+
+    const reviewItemsByTitle = searchedReviews.slice(indexOfFirstReview, indexOfPrevReview)
+
+    
+
+    const renderItemsByTitle = reviewItemsByTitle.sort(sortFunction).map(review => (
         <ReviewItem 
             key={review.id}
             id={review.id}
@@ -85,7 +95,7 @@ export default function ReviewsList() {
 
     //logic for display page numbers
     const pageNumbers = []
-    for(let i = 1; i <= Math.ceil(reviews.length / numOfResults); i++) {
+    for(let i = 1; i <= Math.ceil((title === '' ? reviews.length : searchedReviews.length) / numOfResults); i++) {
         pageNumbers.push(i)
     }
 
