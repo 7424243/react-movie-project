@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <header>
             <div>
-                <img src={movieImg} alt="old movie camera" className="logo"/>
+                <img src={movieImg} alt='old movie camera' className='logo'/>
                 <NavBar />
             </div>
         </header>

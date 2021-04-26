@@ -17,14 +17,12 @@ import { Router, Redirect, Route } from 'react-router-dom'
 import FontFaceObserver from 'fontfaceobserver'
 import history from 'utils/history'
 import 'sanitize.css/sanitize.css'
-
 // Import root app
 import App from 'containers/App'
-
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico'
-import 'file-loader?name=.htaccess!./.htaccess' // eslint-disable-line import/extensions
-
+// eslint-disable-line import/extensions
+import 'file-loader?name=.htaccess!./.htaccess' 
 import configureStore from './config/configureStore'
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in

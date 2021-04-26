@@ -11,7 +11,6 @@ import { getCriticsData } from '../../resources/critics/critics.actions'
 
 
 export function HomePage(props) {
-  const history = useHistory()
 
   //useEffect() is similar to ComponentDidMount
   useEffect(() => {
@@ -22,7 +21,7 @@ export function HomePage(props) {
   return (
     <div>
       <Helmet>
-        <meta name="description" content="Home" />
+        <meta name='description' content='Home' />
       </Helmet>
       <main>
         <h1>Movie Reviews</h1>

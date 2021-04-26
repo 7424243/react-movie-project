@@ -68,6 +68,7 @@ export default function ReviewsList() {
         />
     ))
 
+    //filter review items as user types
     const reviewItemsByTitle = currentReviews.filter(review => review.display_title.toLowerCase().includes(title.toLowerCase()))
 
     const renderItemsByTitle = reviewItemsByTitle.sort(sortFunction).map(review =>  (
@@ -84,7 +85,7 @@ export default function ReviewsList() {
 
     //logic for display page numbers
     const pageNumbers = []
-    for(let i = 1; i <= Math.ceil((reviews.length) / numOfResults); i++) {
+    for(let i = 1; i <= Math.ceil(reviews.length / numOfResults); i++) {
         pageNumbers.push(i)
     }
 
@@ -92,7 +93,7 @@ export default function ReviewsList() {
         <button
             key={number}
             id={number}
-            className="page-number"
+            className='page-number'
             onClick={handlePageChange}
         >
             {number}
@@ -101,40 +102,40 @@ export default function ReviewsList() {
 
     return (
         <>
-            <div className="form-container">
+            <div className='form-container'>
                 <form>
                     <div>
-                        <label htmlFor="title">Search by Title: </label>
+                        <label htmlFor='title'>Search by Title: </label>
                         <input 
-                            type="text" 
-                            name="title" 
+                            type='text'
+                            name='title'
                             onChange={onTitleChange} 
                             value={title}
-                            aria-label="movie title"
+                            aria-label='movie title'
                         />
                     </div>
                     <div>
-                        <label htmlFor="filter">Filter: </label>
+                        <label htmlFor='filter'>Filter: </label>
                         <select 
-                            name="filter" 
+                            name='filter' 
                             onChange={onFilterChange} 
                             defaultValue={filter}
-                            aria-label="filter by"
+                            aria-label='filter by'
                         >
-                            <option value="publication_date" aria-label="publication date">Publication Date</option>
-                            <option value="mpaa_rating" aria-label="mpaa rating">MPAA Rating</option>
-                            <option value="critics_pick" aria-label="number of critic's pick">Critic's Pick</option>
+                            <option value='publication_date' aria-label='publication date'>Publication Date</option>
+                            <option value='mpaa_rating' aria-label='mpaa rating'>MPAA Rating</option>
+                            <option value='critics_pick' aria-label='number of critic`s pick'>Critic's Pick</option>
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="results">Number of Results: </label>
+                        <label htmlFor='results'>Number of Results: </label>
                         <input 
-                            type="number" 
-                            min="0" 
-                            max="50" 
+                            type='number' 
+                            min='0' 
+                            max='50' 
                             onChange={onNumOfResultsChange} 
                             value={numOfResults}
-                            aria-label="number of results per page"
+                            aria-label='number of results per page'
                         />
                     </div>
                 </form>
@@ -143,7 +144,7 @@ export default function ReviewsList() {
             <ol>
                 {title ? renderItemsByTitle : allReviewItems}
             </ol>
-            <div id="page-numbers" className="pagination">
+            <div id='page-numbers' className='pagination'>
                 {renderPageNumbers}
             </div>
         </>
